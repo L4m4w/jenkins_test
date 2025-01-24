@@ -21,6 +21,7 @@ def browser_manager():
     driver = webdriver.Remote(
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options)
+    driver.add_argument('--start-maximized')
 
     browser = Browser(Config(driver))
 

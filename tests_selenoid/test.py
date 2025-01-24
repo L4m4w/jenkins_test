@@ -6,7 +6,7 @@ from configure.conf import browser_manager
 
 def test_dynamic_steps():
     with allure.step('Open Git main page'):
-        browser.open('/')
+        browser.open('https://github.com/')
 
     with allure.step('Search for repo'):
         s(".header-search-button").click()
