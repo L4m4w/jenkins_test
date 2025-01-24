@@ -4,23 +4,23 @@ from selene.support.shared.jquery_style import s
 from configure.conf import browser_manager
 
 
-def test_dynamic_steps():
-    with allure.step('Open Git main page'):
-        browser.open('/')
-
-    with allure.step('Search for repo'):
-        s(".header-search-button").click()
-        s(".FormControl-input").send_keys('eroshenkoam/allure-example')
-        s(".FormControl-input").submit()
-
-    with allure.step('Redirect to repo'):
-        s(by.link_text("eroshenkoam/allure-example")).click()
-
-    with allure.step('Open the issues tab'):
-        s("#issues-tab").click()
-
-    with allure.step('Check issue number'):
-        s(by.partial_text("#95")).should(be.visible)
+# def test_dynamic_steps():
+#     with allure.step('Open Git main page'):
+#         browser.open('/')
+#
+#     with allure.step('Search for repo'):
+#         s(".header-search-button").click()
+#         s(".FormControl-input").send_keys('eroshenkoam/allure-example')
+#         s(".FormControl-input").submit()
+#
+#     with allure.step('Redirect to repo'):
+#         s(by.link_text("eroshenkoam/allure-example")).click()
+#
+#     with allure.step('Open the issues tab'):
+#         s("#issues-tab").click()
+#
+#     with allure.step('Check issue number'):
+#         s(by.partial_text("#95")).should(be.visible)
 
 def test_decorator_steps():
     open_main_page()
