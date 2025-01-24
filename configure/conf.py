@@ -21,9 +21,18 @@ def browser_manager():
     driver = webdriver.Remote(
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options)
-    driver.add_argument('--start-maximized')
 
     browser = Browser(Config(driver))
+
+    browser.config.base_url = 'https://github.com'
+    browser.config.timeout = 4.0
+    browser.config.type_by_js = True
+
+    driver_options = webdriver.ChromeOptions()
+    driver_options.add_argument('--start-maximized')
+    # driver_options.add_argument('--headless')
+
+    browser.config.driver_options = driver_options
 
     yield browser
 
