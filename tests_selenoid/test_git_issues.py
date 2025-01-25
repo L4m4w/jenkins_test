@@ -29,14 +29,14 @@ def test_dynamic_steps():
         s("#issues-tab").click()
 
     with allure.step('Check issue number'):
-        s(by.partial_text("#95")).should(be.visible)
+        s(by.text("95")).should(be.visible)
 
 def test_decorator_steps():
     open_main_page()
     search_for_repository("eroshenkoam/allure-example")
     go_to_repository("eroshenkoam/allure-example")
     open_issue_tab()
-    should_see_issue_with_number("#95")
+    should_see_issue_with_number("95")
 
 
 @allure.step("Открываем главную страницу")
@@ -63,4 +63,4 @@ def open_issue_tab():
 
 @allure.step("Проверяем наличие Issue с номером {number}")
 def should_see_issue_with_number(number):
-    s(by.partial_text(number)).click()
+    s(by.text(number)).click()
