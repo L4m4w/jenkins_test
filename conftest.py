@@ -3,6 +3,7 @@ from selene import Browser, Config
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 # from selene.support.shared import browser
+from utils import attach
 
 
 @pytest.fixture(scope='function')
@@ -26,5 +27,10 @@ def browser_manager(request):
     browser = Browser(Config(driver))
 
     yield browser
+
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_video(browser)
+    attach.add_html(browser)
 
     browser.quit()
