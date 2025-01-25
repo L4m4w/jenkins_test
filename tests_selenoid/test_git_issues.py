@@ -1,10 +1,11 @@
 import allure
-from selene import browser, by, be
+from selene import by, be
 from selene.support.shared.jquery_style import s
 # from selenium import webdriver
-# from conf.conf import browser_manager
+# from conf import browser_manager
 
-def test_dynamic_steps():
+def test_dynamic_steps(browser_manager):
+    browser = browser_manager
     with allure.step('Open Git main page'):
         browser.open('https://github.com/')
 
@@ -22,8 +23,9 @@ def test_dynamic_steps():
     with allure.step('Check issue number'):
         s(by.text("95")).should(be.visible)
 
-def test_decorator_steps():
-    open_main_page()
+def test_decorator_steps(browser_manager):
+    browser = browser_manager
+    open_main_page(browser)
     search_for_repository("eroshenkoam/allure-example")
     go_to_repository("eroshenkoam/allure-example")
     open_issue_tab()
@@ -31,7 +33,7 @@ def test_decorator_steps():
 
 
 @allure.step("Открываем главную страницу")
-def open_main_page():
+def open_main_page(browser):
     browser.open("https://github.com")
 
 

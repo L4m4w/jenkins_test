@@ -5,8 +5,8 @@ from selenium.webdriver.chrome.options import Options
 # from selene.support.shared import browser
 
 
-@pytest.fixture(scope='function', autouse=True)
-def browser_manager():
+@pytest.fixture(scope='function')
+def browser_manager(request):
 
     options = Options()
     selenoid_capabilities = {
