@@ -1,10 +1,20 @@
 import allure
 from selene import browser, by, be
 from selene.support.shared.jquery_style import s
-from configure.conf import browser_manager
+from selenium import webdriver
+# from conf.conf import browser_manager
 
 def test_dynamic_steps():
     with allure.step('Open Git main page'):
+        browser.config.base_url = 'https://github.com'
+        browser.config.timeout = 4.0
+        browser.config.type_by_js = True
+
+        driver_options = webdriver.ChromeOptions()
+        driver_options.add_argument('--start-maximized')
+        # driver_options.add_argument('--headless')
+
+        browser.config.driver_options = driver_options
         browser.open('/')
 
     with allure.step('Search for repo'):
