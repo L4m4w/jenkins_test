@@ -1,7 +1,7 @@
 import allure
 from selene import browser, by, be
 from selene.support.shared.jquery_style import s
-from selenium import webdriver
+# from selenium import webdriver
 # from conf.conf import browser_manager
 
 def test_dynamic_steps():
