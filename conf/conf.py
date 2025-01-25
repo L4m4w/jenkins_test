@@ -24,16 +24,6 @@ def browser_manager():
 
     browser = Browser(Config(driver))
 
-    browser.config.base_url = 'https://github.com'
-    browser.config.timeout = 4.0
-    browser.config.type_by_js = True
-
-    driver_options = webdriver.ChromeOptions()
-    driver_options.add_argument('--start-maximized')
-    # driver_options.add_argument('--headless')
-
-    browser.config.driver_options = driver_options
-
     yield browser
 
     browser.quit()
