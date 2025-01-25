@@ -6,8 +6,8 @@ from selene.support.shared.jquery_style import s
 
 
 @allure.title("Successful fill form")
-def test_successful(browser_manager):
-    browser = browser_manager
+def test_successful(setup_browser):
+    browser = setup_browser
     first_name = "Alex"
     last_name = "Egorov"
 

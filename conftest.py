@@ -1,21 +1,20 @@
 import pytest
-from selene import Browser, Config
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-# from selene.support.shared import browser
+from selene import Browser, Config
+
 from utils import attach
 
-
 @pytest.fixture(scope='function')
-def browser_manager(request):
-
+def setup_browser(request):
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": "100.0",
         "selenoid:options": {
-            "enableVideo": True,
-            "enableVNC": True
+            "enableVNC": True,
+            "enableVideo": True
         }
     }
     options.capabilities.update(selenoid_capabilities)
@@ -25,12 +24,11 @@ def browser_manager(request):
     )
 
     browser = Browser(Config(driver))
-
     yield browser
 
     attach.add_screenshot(browser)
     attach.add_logs(browser)
-    attach.add_video(browser)
     attach.add_html(browser)
+    attach.add_video(browser)
 
     browser.quit()
