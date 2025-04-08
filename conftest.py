@@ -11,7 +11,7 @@ from utils import attach
 def setup_browser(request):
     options = Options()
     selenoid_capabilities = {
-        "browserName": "firefox",
+        "browserName": "chrome",
         "browserVersion": "123.0",
         "selenoid:options": {
             "enableVNC": True,
